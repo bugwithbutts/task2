@@ -34,4 +34,5 @@ void load(text txt, char *filename)
         buf[strlen(buf) - 1] = '\0';
         append_line(txt, buf);
     }
+    fclose(f);
 }
