@@ -1,15 +1,6 @@
 language:
   - cpp
-addons:
-  sonarcloud:
-    organization: "bugwithbutts"
-script:
-  # Wraps the compilation with the Build Wrapper to generate configuration (used
-  # later by the SonarScanner) into the "bw-output" folder
-  - build-wrapper-linux-x86-64 --out-dir bw-output make
-  # And finally run the SonarCloud analysis - read the "sonar-project.properties"
-  # file to see the specific configuration
-  - sonar-scanner -Dsonar.cfamily.build-wrapper-output=bw-output
+
 before_install:
   - pip install --user cpp-coveralls
 
@@ -20,6 +11,16 @@ script:
 
 after_success:
   - coveralls --root . -E ".*external.*" -E ".*tests.*"
-
+  - build-wrapper-linux-x86-64 --out-dir bw-output make clean all
+  # And finally run the SonarCloud analysis - read the "sonar-project.properties"
+  # file to see the specific configuration
+  - sonar-scanner
+cache:
+  directories:
+  - '$HOME/.m2/repository'
+  - '$HOME/.sonar/cache'
 notifications:
   email: false
+addons:
+  sonarcloud:
+    organization: "bugwithbutts"
