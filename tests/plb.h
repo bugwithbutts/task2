@@ -19,13 +19,11 @@ TEST(plbtest,test1)
     text txt = create_text();
     load(txt,"a");
     m(txt,2,2);
-    fplb(txt);
-    f = fopen("a","r");
-    char txts[MAXLINE] = {'\0'};
-    fgets(txts,MAXLINE,f);
-    fclose(f);
+    testing::internal::CaptureStdout();
+    plb(txt);
+    std::string tmpstr = testing::internal::GetCapturedStdout();
     char tmp2[] = "- \n";
-    ASSERT_STREQ(txts,tmp2);
+    ASSERT_STREQ(tmpstr.c_str(),tmp2);
 }
 TEST(plbtest,test2)
 {
@@ -36,12 +34,10 @@ TEST(plbtest,test2)
     text txt = create_text();
     load(txt,"a");
     m(txt,0,0);
-    fplb(txt);
-    f = fopen("a","r");
-    char txts[MAXLINE] = {'\0'};
-    fgets(txts,MAXLINE,f);
-    fclose(f);
+    testing::internal::CaptureStdout();
+    plb(txt);
+    std::string tmpstr = testing::internal::GetCapturedStdout();
     char tmp2[] = "\n";
-    ASSERT_STREQ(txts,tmp2);
+    ASSERT_STREQ(tmpstr.c_str(),tmp2);
 }
 #endif // PLB_H

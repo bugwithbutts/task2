@@ -2,6 +2,7 @@
 #define SHOWCLASSIFIED_H
 #include <gmock/gmock-matchers.h>
 #include <gtest/gtest.h>
+#include <string>
 extern "C"{
     #include "common.h"
     #include<stdlib.h>
@@ -30,12 +31,13 @@ TEST(classtest,test1)
     fprintf(f,"%s",tmp);
     fclose(f);
     text txt = create_text();
+    testing::internal::CaptureStdout();
     load(txt,"a");
-    fshowclassified(txt);
-    load(txt,"b");
-    char tmp2[] = "******12345678\n******** *****\n- ***** ***** 2\n- ******* ****** 1\n\n*\n\n123456789\n";
-    char txts[MAXLINE] = {'\0'};
-    process_forward(txt,check_class_line,txts);
-    ASSERT_STREQ(tmp2,txts);
+    showclassified(txt);
+    std::string tmpstr = (testing::internal::GetCapturedStdout());
+    char txts[MAXLINE];
+    strcpy(txts,tmpstr.c_str());
+    char tmp2[] = "******12345678\n******** *****\n- ***** ***** 2\n- ******* ****** 1\n\n*\n\n123456789\n";      
+    ASSERT_STREQ(tmp2,tmpstr.c_str());
 }
 #endif // SHOWCLASSIFIED_H
