@@ -38,8 +38,6 @@ SOURCES += \
     ../app/text/remove_all.c \
     ../app/text/s.c \
     main.cpp \
-    plb_copy.c \
-    showclassified_copy.c
 
 HEADERS += \
     ../app/common.h \
