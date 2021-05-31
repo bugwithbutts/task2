@@ -2,6 +2,7 @@
 #define SAVE_H
 #include <gmock/gmock-matchers.h>
 #include <gtest/gtest.h>
+#include <string>
 extern "C"{
     #include "common.h"
     #include<stdlib.h>

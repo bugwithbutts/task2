@@ -35,8 +35,7 @@ else: unix:!android: target.path = /opt/$${TARGET}/bin
 !isEmpty(target.path): INSTALLS += target
 
 HEADERS += \
-    common.h \
-    tests/fibonachi_test.h \
+    common.h \   
     text/_text.h \
     text/text.h
 

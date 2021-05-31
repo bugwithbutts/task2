@@ -16,7 +16,7 @@ void save_line (int index, char *line, int cursor, void *f);
 /**
  * Загружает содержимое указанного файла
  */
-void save(text txt, char *filename)
+void save(text txt, const char *filename)
 {
     FILE *f;
 

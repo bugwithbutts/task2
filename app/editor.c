@@ -32,6 +32,7 @@ int main()
         /* Получаем команду */
         fgets(cmdline, MAXLINE, stdin);
 
+
         /* Извлекаем имя команды */
         if ((cmd = strtok(cmdline, " \n")) == NULL) {
             continue;

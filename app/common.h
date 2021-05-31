@@ -63,11 +63,11 @@ void showclassified(text txt);
 /**
  * Загружает содержимое указанного файла
  */
-void load(text txt, char *filename);
+void load(text txt, const char *filename);
 
 /**
  * Сохраняем содержимое в указанный файл (Квист Татьяна)
  */
-void save(text txt, char *filename);
+void save(text txt, const char *filename);
 
 #endif

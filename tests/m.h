@@ -50,4 +50,15 @@ TEST(mtest,wrongtest1)
     int ret = m(txt,4,2);
     ASSERT_EQ(ret,-1);
 }
+TEST(mtest,emptytext)
+{
+    FILE* f = fopen("a","w");
+    char tmp[] = "";
+    fprintf(f,"%s",tmp);
+    fclose(f);
+    text txt = create_text();
+    load(txt,"a");
+    int ret = m(txt,4,2);
+    ASSERT_EQ(ret,-1);
+}
 #endif // M_H

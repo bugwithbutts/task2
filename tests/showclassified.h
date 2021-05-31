@@ -10,20 +10,6 @@ extern "C"{
     #include "text/_text.h"
     #include "helpf.h"
 }
-static void check_class_line(int index, char *contents, int cursor, void *data)
-{
-    /* Функция обработчик всегда получает существующую строку */
-    assert(contents != NULL);
-
-    /* Декларируем неиспользуемые параметры */
-    UNUSED(index);
-    UNUSED(data);
-    UNUSED(cursor);
-    /* Выводим строку на экран */
-    char tmp[MAXLINE];
-    sprintf(tmp,"%s\n", contents);
-    strcat((char*)data,tmp);
-}
 TEST(classtest,test1)
 {
     FILE* f = fopen("a","w");
@@ -38,6 +24,8 @@ TEST(classtest,test1)
     char txts[MAXLINE];
     strcpy(txts,tmpstr.c_str());
     char tmp2[] = "******12345678\n******** *****\n- ***** ***** 2\n- ******* ****** 1\n\n*\n\n123456789\n";      
-    ASSERT_STREQ(tmp2,tmpstr.c_str());
+    char txts2[MAXLINE];
+    strcpy(txts2, tmpstr.c_str());
+    ASSERT_STREQ(tmp2,txts2);
 }
 #endif // SHOWCLASSIFIED_H

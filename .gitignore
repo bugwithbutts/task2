@@ -1,2 +1,4 @@
 *.user
 build
+tests.pro.user
+app/task21.pro.user
